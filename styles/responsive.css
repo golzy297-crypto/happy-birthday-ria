@@ -1,0 +1,273 @@
+/* =====================================================================
+   OUR LITTLE CORNER OF TIME — RESPONSIVE & MOBILE FIRST STYLES
+   ===================================================================== */
+
+@media (max-width: 900px) {
+  .paper-inner-grid,
+  .squash-centerpiece-container,
+  .distance-dashboard,
+  .acl-victory-grid,
+  .acl-reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .paper-manuscript-card {
+    padding: 28px 20px;
+  }
+
+  .paper-photo-frame {
+    height: 260px;
+  }
+
+  .squash-video-card video {
+    height: 300px;
+  }
+
+  .acl-photo-wrap {
+    height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 15px;
+  }
+
+  .chapter-section {
+    padding: 68px 0;
+  }
+
+  .section-container {
+    padding: 0 18px;
+  }
+
+  .chapter-header {
+    margin-bottom: 36px;
+  }
+
+  .chapter-title {
+    font-size: 1.85rem;
+  }
+
+  .chapter-desc {
+    font-size: 1.15rem;
+  }
+
+  /* Audio Bar & Customizer positioning */
+  .top-ambient-bar {
+    top: 14px;
+    right: 14px;
+  }
+  
+  .ambient-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+
+  .customizer-trigger-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* 1. Hero Opening */
+  .hero-opening {
+    min-height: 100svh;
+    padding: 60px 16px 40px;
+  }
+
+  .hero-main-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-preface-line {
+    font-size: 1.15rem;
+  }
+
+  .hero-chapters-overview-box {
+    padding: 20px 16px;
+  }
+
+  .chapters-clean-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .chapter-list-item {
+    padding: 8px 12px;
+  }
+
+  /* 2. Chapter 01 (Paper) */
+  .paper-story-prose {
+    font-size: 0.96rem;
+  }
+
+  .paper-quote-callout {
+    font-size: 1.1rem;
+    padding: 12px 14px;
+  }
+
+  /* 3. Chapter 02 (Squash) */
+  .squash-scoreboard {
+    padding: 22px 18px;
+  }
+
+  .stat-row-item {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* 4. Chapter 03 (ACL Comeback) */
+  .acl-comeback-card {
+    padding: 24px 18px;
+  }
+
+  .acl-cooked-quote {
+    font-size: 1.15rem;
+  }
+
+  .acl-score-quote {
+    font-size: 1.05rem;
+  }
+
+  /* 5. Chapter 04 (Birthday Surprise) */
+  .birthday-symmetry-card {
+    padding: 28px 18px;
+  }
+
+  .symmetry-callout-text {
+    font-size: 1.25rem;
+  }
+
+  .birthday-surprise-photo-wrap {
+    height: 220px;
+  }
+
+  /* Chapter 07 (ML Terminal) */
+  .ml-terminal-wrapper {
+    margin: 0 4px;
+    border-radius: var(--radius-md);
+  }
+
+  .ml-code-body {
+    padding: 16px 14px;
+    font-size: 0.76rem;
+  }
+
+  .ml-diagnostics-output {
+    padding: 16px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* 5. Chapter 04 (Airport) */
+  .section-chapter-airport {
+    padding: 80px 18px;
+  }
+
+  .airport-photo-frame {
+    height: 240px;
+  }
+
+  .airport-prose {
+    font-size: 1.15rem;
+  }
+
+  /* 6. Chapter 05 (Distance) */
+  .clocks-card {
+    padding: 20px;
+  }
+
+  .timezone-pair {
+    padding: 12px 0;
+  }
+
+  .tz-label {
+    font-size: 1.15rem;
+  }
+
+  .distance-screenshots-deck {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .screen-media-frame {
+    height: 200px;
+  }
+
+  /* 7. Chapter 06 (Fights) */
+  .fights-transition-card {
+    padding: 28px 20px;
+  }
+
+  .playful-lead-text {
+    font-size: 1.25rem;
+  }
+
+  .fights-sincere-part {
+    font-size: 0.98rem;
+  }
+
+  /* 8. Chapter 07 (Her) */
+  .her-trait-card {
+    padding: 22px 20px;
+  }
+
+  .her-trait-lead {
+    font-size: 1.2rem;
+  }
+
+  .her-trait-body {
+    font-size: 1.1rem;
+  }
+
+  /* 9. Chapter 08 (Today & Letter) */
+  .section-chapter-today {
+    padding: 80px 16px 100px;
+  }
+
+  .today-birthday-card {
+    padding: 32px 18px;
+  }
+
+  .today-birthday-headline {
+    font-size: 1.85rem;
+  }
+
+  .today-wishes-flow p {
+    font-size: 1.15rem;
+  }
+
+  .letter-sheet {
+    padding: 44px 20px 32px;
+  }
+
+  .letter-salutation {
+    font-size: 1.35rem;
+  }
+
+  .letter-body-prose {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .letter-hand-signature {
+    font-size: 2.1rem;
+  }
+
+  .btn-restart-journey {
+    padding: 12px 24px;
+    font-size: 0.88rem;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

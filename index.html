@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Since the last time… A personal, cinematic birthday website documenting everything that happened over this past year for Ria.">
+  <title>Since the last time… — Happy Birthday Ria</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+
+  <!-- Film Grain Overlay -->
+  <canvas id="film-grain-canvas"></canvas>
+
+  <!-- Top Ambient Sound Control (Muted by default, strictly opt-in) -->
+  <div class="top-ambient-bar">
+    <button class="ambient-btn" id="ambient-sound-toggle" aria-label="Toggle ambient soundtrack">
+      <div class="sound-waves">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="ambient-btn-text">Gentle Ambience: Muted</span>
+    </button>
+  </div>
+
+  <!-- ============================================================
+       OPENING: "SINCE THE LAST TIME..."
+       ============================================================ -->
+  <section class="hero-opening" id="section-hero">
+    <canvas id="hero-stars-canvas"></canvas>
+    <div class="hero-radial-glow"></div>
+
+    <div class="hero-content">
+      <div class="hero-season-callback">
+        <span>✦</span>
+        <span>Season 2 • The Next Chapter</span>
+      </div>
+
+      <div class="hero-preface-lines" id="hero-preface-lines">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <h1 class="hero-main-title" id="hero-headline">Since the last time…</h1>
+      <p class="hero-subtitle" id="hero-subtitle"></p>
+
+      <!-- Clean List of 10 Chapters -->
+      <div class="hero-chapters-overview-box">
+        <div class="chapters-list-header">The Year in 10 Chapters</div>
+        <div class="chapters-clean-list" id="hero-chapters-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#chapter-01" class="btn-cinema" id="hero-start-btn">
+          <span>Start Chapter 01</span>
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 01: FIRST PAPER ACCEPTANCE 📝
+       ============================================================ -->
+  <section class="chapter-section section-chapter-paper" id="chapter-01">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 01 • Academic Milestone</span>
+        <h2 class="chapter-title">First Paper Acceptance 📝</h2>
+        <p class="chapter-desc">You happened to be right there when the email arrived.</p>
+      </div>
+
+      <div class="paper-manuscript-card reveal-on-scroll" id="chapter1-card">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 02: OUR ONE-YEAR SQUASH ARC 🏸
+       ============================================================ -->
+  <section class="chapter-section section-chapter-squash" id="chapter-02">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 02 • Mini Movie &amp; Match Stats</span>
+        <h2 class="chapter-title">Our One-Year Squash Arc 🏸</h2>
+        <p class="chapter-desc">One full year on court, countless questionable line calls, and 100+ rallies.</p>
+      </div>
+
+      <div class="squash-centerpiece-container reveal-on-scroll" id="chapter2-container">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 03: ACL: THE COMEBACK 📄 → 🏆
+       ============================================================ -->
+  <section class="chapter-section section-chapter-acl" id="chapter-03">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 03 • The Rebuttal &amp; Triumph</span>
+        <h2 class="chapter-title">ACL: The Comeback 📄 → 🏆</h2>
+        <p class="chapter-desc">Bad reviews first. Revision mode activated. Acceptance conquered.</p>
+      </div>
+
+      <div class="acl-comeback-card reveal-on-scroll" id="chapter3-card">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 04: THE BIRTHDAY SURPRISE 🎂
+       ============================================================ -->
+  <section class="chapter-section section-chapter-birthday" id="chapter-04">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 04 • The Birthday Surprise</span>
+        <h2 class="chapter-title">The Birthday Surprise 🎂</h2>
+        <p class="chapter-desc">When you made me feel so deeply valued and celebrated.</p>
+      </div>
+
+      <div class="birthday-symmetry-card reveal-on-scroll" id="chapter4-card">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 05: THE AIRPORT ✈️
+       ============================================================ -->
+  <section class="chapter-section section-chapter-airport" id="chapter-05">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge" style="background: rgba(255,255,255,0.08); color: var(--accent-gold-light);">
+          Chapter 05 • The Turning Point
+        </span>
+        <h2 class="chapter-title" style="color: #FFFFFF;">The Airport ✈️</h2>
+        <p class="chapter-desc" style="color: var(--text-light-muted);">
+          The hardest goodbye, and the exact moment ordinary days stopped being ordinary.
+        </p>
+      </div>
+
+      <div class="airport-stark-card reveal-on-scroll" id="chapter5-card">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 06: LONG DISTANCE 🌎
+       ============================================================ -->
+  <section class="chapter-section section-chapter-distance" id="chapter-06">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 06 • Across The Oceans</span>
+        <h2 class="chapter-title">Long Distance 🌎</h2>
+        <p class="chapter-desc">8,000 miles, mismatched time zones, FaceTimes, and screenshot memories.</p>
+      </div>
+
+      <div class="distance-dashboard reveal-on-scroll" id="chapter6-card">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 07: THE ODDS — 97.3% 📊
+       ============================================================ -->
+  <section class="chapter-section section-chapter-odds" id="chapter-07">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 07 • Calculated Probability</span>
+        <h2 class="chapter-title">The Odds: 97.3% 📊</h2>
+        <p class="chapter-desc">The empirical math of making it through everything.</p>
+      </div>
+
+      <div class="odds-card-wrapper reveal-on-scroll" id="chapter7-odds-card">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 08: OUR PETTY FIGHTS™ ⚡
+       ============================================================ -->
+  <section class="chapter-section section-chapter-fights" id="chapter-08">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 08 • What Was Underneath</span>
+        <h2 class="chapter-title">Our Petty Fights™ ⚡</h2>
+        <p class="chapter-desc">Self-awareness, learning to listen, and realizing what genuinely mattered.</p>
+      </div>
+
+      <div class="fights-transition-card reveal-on-scroll" id="chapter8-fights-card">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 09: THINGS I DON'T SAY ENOUGH ABOUT YOU 🌸
+       ============================================================ -->
+  <section class="chapter-section section-chapter-her" id="chapter-09">
+    <div class="section-container">
+      <div class="chapter-header reveal-on-scroll">
+        <span class="chapter-number-badge">Chapter 09 • Who You Are</span>
+        <h2 class="chapter-title">Things I Don't Say Enough About You 🌸</h2>
+        <p class="chapter-desc">Not about what you did for me or for us. Just about who you are as a person.</p>
+      </div>
+
+      <div class="her-traits-grid" id="chapter9-traits-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHAPTER 10: TODAY (HER BIRTHDAY & UNWRITTEN ENDING) 🎂
+       ============================================================ -->
+  <section class="chapter-section section-chapter-today" id="chapter-10">
+    <div class="section-container">
+      
+      <!-- Unwritten Story Banner -->
+      <div class="today-unwritten-banner reveal-on-scroll" id="today-unwritten-banner">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Birthday Blessing Card -->
+      <div class="today-birthday-card reveal-on-scroll delay-1" id="today-birthday-card">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Final Letter Stationery -->
+      <div class="letter-stationery-envelope reveal-on-scroll delay-2">
+        <div class="letter-sheet">
+          <div class="letter-deckle-edge"></div>
+          <div class="letter-wax-seal">✦</div>
+
+          <div class="letter-meta-date">October 2024</div>
+          <h3 class="letter-salutation" id="letter-salutation-display">Dear Ria,</h3>
+          <div class="letter-body-prose" id="letter-body-prose-display">
+            <!-- Full letter text -->
+          </div>
+
+          <div class="letter-signoff" id="letter-signoff-display">With all my love and gratitude,</div>
+          <div class="letter-hand-signature" id="letter-signature-display">Dhruv</div>
+        </div>
+
+        <div class="return-button-wrapper reveal-on-scroll delay-3">
+          <a href="#chapter-01" class="btn-restart-journey" id="btn-return-start">
+            <span>Start from Chapter 01 ↺</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Application Scripts -->
+  <script src="data/memoryData.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/ambientSound.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
