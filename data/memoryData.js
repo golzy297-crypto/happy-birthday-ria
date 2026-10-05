@@ -201,7 +201,7 @@ Being so rude and not getting what you wanted was wrong of me because it dismiss
     birthdayWish: {
       headline: "Happy Birthday, Ria.",
       wishes: [
-        "I hope this year is kind to you and may you flfill all your aspirations, I dont have any doubt about how crazy these 6 months are gonna be for you, cause ik you are gonna get the best university where you will rise and shine.",
+        "I hope this year is kind to you and may you fulfill all your aspirations, I dont have any doubt about how crazy these 6 months are gonna be for you, cause ik you are gonna get the best university where you will rise and shine.",
         "I hope you do things that scare you, find things that excite you, laugh until your stomach hurts, and become even more of the person you're meant to be.",
         "And wherever I fit into that story, I'm just grateful I got to be in these chapters."
       ]
