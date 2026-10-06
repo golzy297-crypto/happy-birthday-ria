@@ -1305,3 +1305,547 @@ body.video-modal-open {
   letter-spacing: 0.03em;
 }
 
+/* -------------------------------------------------------------
+   INTERACTIVE 21ST CANDLE & WISH BOX
+   ------------------------------------------------------------- */
+.candle-interactive-card {
+  max-width: 780px;
+  margin: 0 auto 54px auto;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF6EE 100%);
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: var(--radius-lg);
+  padding: 44px 32px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.candle-interactive-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.candle-prompt-text {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-style: italic;
+  color: var(--accent-gold-deep);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.candle-interactive-stage {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 16px 28px 24px;
+  border-radius: var(--radius-md);
+  background: rgba(197, 160, 89, 0.05);
+  border: 1px solid rgba(197, 160, 89, 0.15);
+  transition: transform 0.3s ease, background 0.3s ease;
+  user-select: none;
+}
+
+.candle-interactive-stage:hover {
+  transform: translateY(-2px);
+  background: rgba(197, 160, 89, 0.1);
+}
+
+.candle-flame-container {
+  position: relative;
+  width: 24px;
+  height: 36px;
+  margin-bottom: 2px;
+}
+
+.candle-flame {
+  width: 20px;
+  height: 32px;
+  background: radial-gradient(ellipse at bottom, #FFF7D6 0%, #FFB703 45%, #FB8500 80%, rgba(251, 133, 0, 0) 100%);
+  border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+  box-shadow: 0 0 16px rgba(255, 183, 3, 0.8), 0 0 32px rgba(251, 133, 0, 0.4);
+  animation: candleFlicker 1.8s infinite ease-in-out alternate;
+  transform-origin: center bottom;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin: 0 auto;
+}
+
+.candle-flame.blown-out {
+  opacity: 0;
+  transform: scale(0.2) translateY(-10px);
+  pointer-events: none;
+}
+
+.candle-smoke {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: rgba(150, 150, 150, 0.4);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.candle-flame.blown-out ~ .candle-smoke {
+  animation: risingSmoke 1.5s ease-out forwards;
+}
+
+@keyframes candleFlicker {
+  0% { transform: scale(1) rotate(-1deg); filter: brightness(1); }
+  25% { transform: scale(1.05, 0.95) rotate(1.5deg); filter: brightness(1.1); }
+  50% { transform: scale(0.98, 1.02) rotate(-1.5deg); filter: brightness(0.95); }
+  75% { transform: scale(1.03, 0.97) rotate(1deg); filter: brightness(1.05); }
+  100% { transform: scale(1) rotate(-0.5deg); filter: brightness(1); }
+}
+
+@keyframes risingSmoke {
+  0% { opacity: 0.8; transform: translate(-50%, 0) scale(1); }
+  50% { opacity: 0.5; transform: translate(-45%, -25px) scale(2.5); filter: blur(2px); }
+  100% { opacity: 0; transform: translate(-55%, -50px) scale(4); filter: blur(4px); }
+}
+
+.candle-wick {
+  width: 3px;
+  height: 10px;
+  background: #332A24;
+  border-radius: 2px 2px 0 0;
+  margin-bottom: -2px;
+  z-index: 2;
+}
+
+.candle-wax-body {
+  width: 68px;
+  height: 100px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5EDE0 100%);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 8px 8px 4px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(20, 19, 18, 0.08), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.candle-wax-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #EAE0D0;
+  border-radius: 8px 8px 0 0;
+}
+
+.candle-engraving {
+  font-family: var(--font-serif-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.05em;
+}
+
+.candle-wish-revealed {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(16px);
+  transition: all 0.7s var(--ease-cinematic);
+  margin-top: 0;
+}
+
+.candle-wish-revealed.active {
+  max-height: 400px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 32px;
+  background: #FAF7F2;
+  border: 1px solid var(--border-gold-subtle);
+  border-left: 4px solid var(--accent-gold);
+  padding: 24px 28px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.candle-revealed-badge {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold-deep);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.candle-revealed-text {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  font-style: italic;
+  color: var(--text-dark-primary);
+  line-height: 1.65;
+}
+
+/* -------------------------------------------------------------
+   NO-EXPIRATION BIRTHDAY COUPONS DECK (BOX TICKET DESIGN)
+   ------------------------------------------------------------- */
+.coupons-section-wrapper {
+  max-width: 860px;
+  margin: 0 auto 64px auto;
+  background: #FAF7F2;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 44px 32px;
+  box-shadow: var(--shadow-sm);
+}
+
+.coupons-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.coupons-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold-deep);
+  background: rgba(197, 160, 89, 0.15);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.coupons-title {
+  font-family: var(--font-serif-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--text-dark-primary);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.coupons-subtitle {
+  font-family: var(--font-serif-editorial);
+  font-size: 1.15rem;
+  color: var(--text-dark-muted);
+  font-style: italic;
+}
+
+.coupons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.coupon-card {
+  background: #FFFFFF;
+  border: 1.5px dashed rgba(197, 160, 89, 0.5);
+  border-radius: var(--radius-md);
+  padding: 26px 24px;
+  box-shadow: 0 4px 16px rgba(20, 19, 18, 0.04);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.coupon-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+}
+
+.coupon-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-gold);
+}
+
+.coupon-ticket-notch {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #FAF7F2;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.coupon-notch-left {
+  left: -9px;
+  border-right: 1.5px dashed rgba(197, 160, 89, 0.5);
+}
+
+.coupon-notch-right {
+  right: -9px;
+  border-left: 1.5px dashed rgba(197, 160, 89, 0.5);
+}
+
+.coupon-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.coupon-icon {
+  font-size: 1.6rem;
+  background: var(--bg-cream-soft);
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.coupon-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.coupon-pass-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-bronze);
+  font-weight: 700;
+}
+
+.coupon-card-title {
+  font-family: var(--font-serif-display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--text-dark-primary);
+  line-height: 1.25;
+}
+
+.coupon-desc {
+  font-size: 0.92rem;
+  color: var(--text-dark-secondary);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.coupon-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 42px;
+  border-top: 1px dashed rgba(28, 25, 23, 0.08);
+  padding-top: 14px;
+}
+
+.btn-redeem-coupon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1C1917;
+  color: #DFC48D;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-redeem-coupon:hover {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: var(--accent-gold);
+  transform: scale(1.02);
+}
+
+.redeem-btn-sparkle {
+  font-size: 0.85rem;
+}
+
+.coupon-redeemed-stamp {
+  display: none;
+}
+
+.coupon-card.redeemed .btn-redeem-coupon {
+  display: none;
+}
+
+.coupon-card.redeemed .coupon-redeemed-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 2px solid #C53030;
+  color: #C53030;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 0.84rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: rgba(197, 48, 48, 0.06);
+  transform: rotate(-2.5deg);
+  animation: stampPunch 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  box-shadow: 0 2px 8px rgba(197, 48, 48, 0.12);
+}
+
+@keyframes stampPunch {
+  0% { transform: scale(2.2) rotate(-15deg); opacity: 0; }
+  100% { transform: scale(1) rotate(-2.5deg); opacity: 1; }
+}
+
+/* -------------------------------------------------------------
+   WAX SEAL ENVELOPE STATIONERY
+   ------------------------------------------------------------- */
+.envelope-sealed-cover {
+  background: linear-gradient(145deg, #FAF6EE 0%, #F0E8D7 100%);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 56px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-lifted);
+  cursor: pointer;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.envelope-sealed-cover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(197, 160, 89, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.envelope-sealed-cover.opened {
+  display: none;
+}
+
+.envelope-card-header {
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.envelope-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold-deep);
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.envelope-title {
+  font-family: var(--font-serif-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--text-dark-primary);
+  font-weight: 500;
+}
+
+.wax-seal-interactive {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.wax-seal-outer-rim {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #E2C068 0%, #B88B2A 50%, #7A550B 100%);
+  box-shadow: 0 8px 24px rgba(122, 85, 11, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 240, 190, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  animation: waxPulseGlow 2.5s infinite ease-in-out;
+}
+
+.wax-seal-interactive:hover .wax-seal-outer-rim {
+  transform: scale(1.08);
+}
+
+.wax-seal-inner-core {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wax-monogram {
+  font-family: var(--font-serif-display);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1;
+}
+
+.wax-click-hint {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-serif-editorial);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--accent-gold-deep);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+@keyframes waxPulseGlow {
+  0%, 100% { box-shadow: 0 8px 24px rgba(122, 85, 11, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.6); }
+  50% { box-shadow: 0 10px 32px rgba(226, 192, 104, 0.6), inset 0 2px 6px rgba(255, 255, 255, 0.8); }
+}
+
+.letter-sheet {
+  display: none;
+}
+
+.letter-sheet.unfolded {
+  display: block;
+  animation: unfoldPaperAnim 0.8s var(--ease-cinematic) forwards;
+}
+
+@keyframes unfoldPaperAnim {
+  0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+

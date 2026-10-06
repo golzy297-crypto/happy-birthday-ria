@@ -262,6 +262,37 @@
     font-size: 1.15rem;
   }
 
+  /* Candle & Coupons Responsive */
+  .candle-interactive-card {
+    padding: 32px 18px;
+  }
+
+  .coupons-section-wrapper {
+    padding: 32px 16px;
+  }
+
+  .coupons-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .coupon-card {
+    padding: 20px 18px;
+  }
+
+  .envelope-sealed-cover {
+    padding: 40px 18px;
+  }
+
+  .wax-seal-outer-rim {
+    width: 68px;
+    height: 68px;
+  }
+
+  .wax-monogram {
+    font-size: 1.8rem;
+  }
+
   .letter-sheet {
     padding: 44px 20px 32px;
   }

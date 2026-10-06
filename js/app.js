@@ -419,21 +419,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (candleCard && today.candleWish) {
       candleCard.innerHTML = `
         <div class="candle-prompt-text">🕯️ Tap the candle to make your 21st wish</div>
-        <div class="candle-flame-wrapper" id="interactive-candle-wrapper">
-          <div class="candle-flame" id="candle-flame-el"></div>
-          <div class="candle-smoke"></div>
+        <div class="candle-interactive-stage" id="interactive-candle-wrapper" role="button" tabindex="0" title="Tap to blow out your 21st candle">
+          <div class="candle-flame-container">
+            <div class="candle-flame" id="candle-flame-el"></div>
+            <div class="candle-smoke"></div>
+          </div>
           <div class="candle-wick"></div>
-          <div class="candle-wax-body">21</div>
+          <div class="candle-wax-body">
+            <div class="candle-engraving">21</div>
+          </div>
         </div>
         <div class="candle-wish-revealed" id="candle-revealed-box">
+          <div class="candle-revealed-badge">✨ 21st Birthday Wish ✨</div>
           <p class="candle-revealed-text">“${escapeHtml(today.candleWish.revealedMessage)}”</p>
         </div>
       `;
 
+      const candleStage = document.getElementById('interactive-candle-wrapper');
       const candleFlame = document.getElementById('candle-flame-el');
       const revealedBox = document.getElementById('candle-revealed-box');
-      if (candleCard && candleFlame && revealedBox) {
-        candleCard.addEventListener('click', () => {
+      if (candleStage && candleFlame && revealedBox) {
+        candleStage.addEventListener('click', () => {
           if (!candleFlame.classList.contains('blown-out')) {
             candleFlame.classList.add('blown-out');
             revealedBox.classList.add('active');
@@ -447,21 +453,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (couponsContainer && today.coupons) {
       couponsContainer.innerHTML = `
         <div class="coupons-header">
+          <div class="coupons-badge">VIP RIA ACCESS</div>
           <h3 class="coupons-title">✦ No-Expiration Birthday Coupons ✦</h3>
           <p class="coupons-subtitle">Redeemable by Ria anytime, anywhere.</p>
         </div>
         <div class="coupons-grid">
           ${today.coupons.map(c => `
             <div class="coupon-card" id="coupon-${c.id}">
-              <div>
+              <div class="coupon-ticket-notch coupon-notch-left"></div>
+              <div class="coupon-ticket-notch coupon-notch-right"></div>
+              <div class="coupon-inner-content">
                 <div class="coupon-card-header">
                   <span class="coupon-icon">${c.icon}</span>
-                  <h4 class="coupon-card-title">${escapeHtml(c.title)}</h4>
+                  <div class="coupon-title-wrap">
+                    <span class="coupon-pass-tag">OFFICIAL VOUCHER</span>
+                    <h4 class="coupon-card-title">${escapeHtml(c.title)}</h4>
+                  </div>
                 </div>
                 <p class="coupon-desc">${escapeHtml(c.desc)}</p>
               </div>
-              <button class="btn-redeem-coupon" onclick="window.redeemCoupon('${c.id}')">Redeem</button>
-              <div class="coupon-redeemed-stamp">✓ REDEEMED FOR RIA ❤️</div>
+              <div class="coupon-footer">
+                <button class="btn-redeem-coupon" onclick="window.redeemCoupon('${c.id}')" aria-label="Redeem coupon ${escapeHtml(c.title)}">
+                  <span>Redeem Coupon</span>
+                  <span class="redeem-btn-sparkle">✨</span>
+                </button>
+                <div class="coupon-redeemed-stamp">
+                  <span class="stamp-check">✓</span>
+                  <span class="stamp-text">REDEEMED FOR RIA ❤️</span>
+                </div>
+              </div>
             </div>
           `).join('')}
         </div>
