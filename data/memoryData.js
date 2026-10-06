@@ -18,6 +18,11 @@ const memoryData = {
   // 2. OPENING: The Callback & 10 Chapter List
   opening: {
     callbackBadge: "Season 2",
+    introVideo: {
+      buttonText: "Watch This First 🎬",
+      videoSrc: "assets/videos/intro.mp4",
+      fallbackSrc: "assets/videos/intro.mov"
+    },
     preface: [
       "Last year, I tried to put our story into a video.",
       "Turns out, a lot can happen in a year."

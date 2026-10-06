@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup Scroll Animations
   setupScrollAnimations();
 
+  // Setup Intro Video Modal & Scroll Gate
+  setupIntroVideoModal(data.opening ? data.opening.introVideo : null);
+
   // -------------------------------------------------------------
   // MASTER RENDER PIPELINE
   // -------------------------------------------------------------
@@ -464,6 +467,95 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  }
+
+  // -------------------------------------------------------------
+  // INTRO VIDEO POPUP & SCROLL UNLOCK
+  // -------------------------------------------------------------
+  function setupIntroVideoModal(introConfig) {
+    const playBtn = document.getElementById('btn-play-intro-video');
+    const modal = document.getElementById('intro-video-modal');
+    const closeBtn = document.getElementById('intro-modal-close');
+    const video = document.getElementById('intro-video-player');
+    const btnText = document.getElementById('btn-intro-text');
+
+    if (introConfig && introConfig.buttonText && btnText) {
+      btnText.textContent = introConfig.buttonText;
+    }
+
+    if (!playBtn || !modal || !video) return;
+
+    function openVideo() {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('video-modal-open');
+
+      // Pause ambient audio if active
+      if (window.ambientSound && window.ambientSound.isPlaying) {
+        window.ambientSound.pause();
+      }
+
+      video.currentTime = 0;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.log('Video autoplay prevented, user can click play on player:', err);
+        });
+      }
+    }
+
+    function closeVideo(scrollAfter = false) {
+      video.pause();
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('video-modal-open');
+
+      if (scrollAfter) {
+        const ch1 = document.getElementById('chapter-01');
+        if (ch1) {
+          setTimeout(() => {
+            ch1.scrollIntoView({ behavior: 'smooth' });
+          }, 350);
+        }
+      }
+    }
+
+    playBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openVideo();
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeVideo(false);
+      });
+    }
+
+    // Automatically close modal & unlock scroll when video finishes!
+    video.addEventListener('ended', () => {
+      const hint = modal.querySelector('.intro-video-hint');
+      if (hint) {
+        hint.innerHTML = '<span>✦ Unlocking your birthday site... ❤️</span>';
+      }
+      setTimeout(() => {
+        closeVideo(true);
+      }, 900);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeVideo(false);
+      }
+    });
+
+    // Close when clicking outside the video container
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeVideo(false);
+      }
+    });
   }
 
   function escapeHtml(str) {

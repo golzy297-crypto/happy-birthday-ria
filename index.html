@@ -69,6 +69,10 @@
       </div>
 
       <div class="hero-cta">
+        <button class="btn-intro-video" id="btn-play-intro-video" aria-label="Watch intro video message">
+          <span class="play-icon">▶</span>
+          <span id="btn-intro-text">Watch This First 🎬</span>
+        </button>
         <a href="#chapter-01" class="btn-cinema" id="hero-start-btn">
           <span>Start Chapter 01</span>
           <span class="btn-arrow">→</span>
@@ -76,6 +80,25 @@
       </div>
     </div>
   </section>
+
+  <!-- ============================================================
+       INTRO VIDEO POP-UP MODAL (UNLOCKS WEBSITE ON END)
+       ============================================================ -->
+  <div class="intro-video-overlay" id="intro-video-modal" aria-hidden="true">
+    <div class="intro-video-container">
+      <button class="intro-modal-close" id="intro-modal-close" title="Skip to website">✕ Skip to site</button>
+      <div class="intro-video-wrapper">
+        <video id="intro-video-player" playsinline controls preload="auto">
+          <source src="assets/videos/intro.mp4" type="video/mp4">
+          <source src="assets/videos/intro.mov" type="video/quicktime">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="intro-video-hint">
+        <span>✦ Sit back with sound on • Website unlocks when video ends</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ============================================================
        CHAPTER 01: FIRST PAPER ACCEPTANCE 📝

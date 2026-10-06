@@ -1,0 +1,3 @@
+# Large raw camera files
+*.mov
+.DS_Store
