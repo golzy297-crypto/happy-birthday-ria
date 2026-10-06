@@ -205,7 +205,7 @@ Being so rude and not getting what you wanted was wrong of me because it dismiss
     ],
     candleWish: {
       prompt: "Tap the candle to make your 21st wish 🎂",
-      revealedMessage: "Whatever you just wished for—especially these next 6 months of university applications—I know with everything in me that it’s coming true for you. You are going to get into the best university where you will rise and shine! ✨"
+      revealedMessage: "Always and always and always tons and tons of success and happiness..."
     },
     coupons: [
       {
