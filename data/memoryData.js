@@ -229,7 +229,7 @@ Being so rude and not getting what you wanted was wrong of me because it dismiss
       {
         id: "c4",
         icon: "🎧",
-        title: "All time listenr",
+        title: "All time listener",
         desc: "I will stop cutting u and start to listen!!"
       }
     ],
