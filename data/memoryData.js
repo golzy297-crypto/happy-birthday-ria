@@ -203,6 +203,36 @@ Being so rude and not getting what you wanted was wrong of me because it dismiss
       "But today isn't about figuring that out.",
       "Today is about you."
     ],
+    candleWish: {
+      prompt: "Tap the candle to make your 21st wish 🎂",
+      revealedMessage: "Whatever you just wished for—especially these next 6 months of university applications—I know with everything in me that it’s coming true for you. You are going to get into the best university where you will rise and shine! ✨"
+    },
+    coupons: [
+      {
+        id: "c1",
+        icon: "🏸",
+        title: "1x Squash Rematch",
+        desc: "Valid for 1 full match where I promise to accept all your disputed line calls without a single argument."
+      },
+      {
+        id: "c2",
+        icon: "😋",
+        title: "1x Date at Amar",
+        desc: "Smoothies, food, and dessert entirely on me, anywhere, anytime we're in the same city."
+      },
+      {
+        id: "c3",
+        icon: "📝",
+        title: "24/7 Application Hype-Man",
+        desc: "Unlimited SOP proofreading, GRE pep talks, and 24/7 hype-man energy with zero complaints."
+      },
+      {
+        id: "c4",
+        icon: "✈️",
+        title: "1x Midnight Airport Pickup",
+        desc: "Guaranteed arrival at the arrivals gate with flowers & coffee, no matter which airport in the world."
+      }
+    ],
     birthdayWish: {
       headline: "Happy Birthday, Ria.",
       wishes: [

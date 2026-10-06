@@ -66,7 +66,7 @@
   margin-bottom: 24px;
   opacity: 0;
   transform: translateY(10px);
-  animation: heroFadeIn 1.8s var(--ease-cinematic) 0.3s forwards;
+  animation: heroFadeIn 0.8s var(--ease-cinematic) 0.1s forwards;
 }
 
 .hero-preface-lines {
@@ -76,7 +76,7 @@
   margin-bottom: 28px;
   opacity: 0;
   transform: translateY(14px);
-  animation: heroFadeIn 2s var(--ease-cinematic) 1.2s forwards;
+  animation: heroFadeIn 0.8s var(--ease-cinematic) 0.2s forwards;
 }
 
 .hero-preface-line {
@@ -97,7 +97,7 @@
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
   opacity: 0;
   transform: translateY(16px);
-  animation: heroFadeIn 2.2s var(--ease-cinematic) 2.4s forwards;
+  animation: heroFadeIn 0.9s var(--ease-cinematic) 0.3s forwards;
 }
 
 .hero-subtitle {
@@ -108,7 +108,7 @@
   margin-bottom: 36px;
   opacity: 0;
   transform: translateY(16px);
-  animation: heroFadeIn 2.2s var(--ease-cinematic) 3.4s forwards;
+  animation: heroFadeIn 0.9s var(--ease-cinematic) 0.4s forwards;
 }
 
 .hero-chapters-overview-box {
@@ -121,7 +121,7 @@
   max-width: 720px;
   opacity: 0;
   transform: translateY(18px);
-  animation: heroFadeIn 2s var(--ease-cinematic) 4.2s forwards;
+  animation: heroFadeIn 0.9s var(--ease-cinematic) 0.5s forwards;
 }
 
 .chapters-list-header {
@@ -180,7 +180,7 @@
   gap: 16px;
   opacity: 0;
   transform: translateY(16px);
-  animation: heroFadeIn 2s var(--ease-cinematic) 5s forwards;
+  animation: heroFadeIn 0.9s var(--ease-cinematic) 0.6s forwards;
 }
 
 @keyframes heroFadeIn {
@@ -1304,3 +1304,4 @@ body.video-modal-open {
   text-align: center;
   letter-spacing: 0.03em;
 }
+

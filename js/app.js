@@ -12,19 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Initial Render of all 10 Chapters
+  // 1. Master Render of all 10 Chapters
   renderAllChapters();
 
-  // Setup Global Lightbox
+  // 2. Setup Global Lightbox
   setupPhotoLightbox();
 
-  // Setup Ambient Music Toggle
+  // 3. Setup Ambient Music Toggle
   setupAmbientControls();
 
-  // Setup Scroll Animations
+  // 4. Setup Scroll Animations
   setupScrollAnimations();
 
-  // Setup Intro Video Modal & Scroll Gate
+  // 5. Setup Intro Video Modal & Scroll Gate
   setupIntroVideoModal(data.opening ? data.opening.introVideo : null);
 
   // -------------------------------------------------------------
@@ -54,16 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const listEl = document.getElementById('hero-chapters-list');
     const startBtn = document.getElementById('hero-start-btn');
 
-    if (prefaceEl && opening.preface) {
+    if (prefaceEl && opening && opening.preface) {
       prefaceEl.innerHTML = opening.preface.map(line => `
         <p class="hero-preface-line">${escapeHtml(line)}</p>
       `).join('');
     }
 
-    if (headlineEl) headlineEl.textContent = opening.headline || 'Since the last time…';
-    if (subtitleEl) subtitleEl.textContent = opening.subtitle || '';
+    if (headlineEl && opening) headlineEl.textContent = opening.headline || 'Since the last time…';
+    if (subtitleEl && opening) subtitleEl.textContent = opening.subtitle || '';
 
-    if (listEl && opening.chaptersList) {
+    if (listEl && opening && opening.chaptersList) {
       listEl.innerHTML = opening.chaptersList.map(ch => `
         <a href="#chapter-${ch.num}" class="chapter-list-item">
           <span class="chapter-item-num">${ch.num}</span>
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -------------------------------------------------------------
-  // CHAPTER 06 — LONG DISTANCE 🌎
+  // CHAPTER 06 — LONG DISTANCE 🌎 (WITH LIVE TIME PULSE)
   // -------------------------------------------------------------
   function renderChapter6_Distance(distance) {
     const container = document.getElementById('chapter6-card');
@@ -239,17 +239,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     container.innerHTML = `
       <div class="clocks-card">
+        <div class="live-distance-indicator">
+          <span class="pulse-dot"></span>
+          <span>Live Synchronized Clocks • 8,012 Miles</span>
+        </div>
+
         <div class="timezone-pair">
           <div class="tz-box">
-            <div class="tz-city">${escapeHtml(distance.timezones.her.city)}</div>
-            <div class="tz-label">${escapeHtml(distance.timezones.her.zone)}</div>
+            <div class="tz-flag">🇮🇳</div>
+            <div class="tz-city">${escapeHtml(distance.timezones.her.city)} (Ria)</div>
+            <div class="tz-live-time" id="clock-mumbai">--:--:--</div>
+            <div class="tz-sub-label">IST (UTC+5:30)</div>
           </div>
-          <div style="font-size: 1.5rem; color: var(--accent-gold); align-self: center;">⇄</div>
+
+          <div class="tz-divider-beam">
+            <span class="beam-icon">⇄</span>
+          </div>
+
           <div class="tz-box">
-            <div class="tz-city">${escapeHtml(distance.timezones.him.city)}</div>
-            <div class="tz-label">${escapeHtml(distance.timezones.him.zone)}</div>
+            <div class="tz-flag">🇺🇸</div>
+            <div class="tz-city">${escapeHtml(distance.timezones.him.city)} (Dhruv)</div>
+            <div class="tz-live-time" id="clock-la">--:--:--</div>
+            <div class="tz-sub-label">Pacific Time (PT)</div>
           </div>
         </div>
+
+        <div class="distance-quote-bar">
+          “8,012 miles apart, but sharing the exact same second.”
+        </div>
+
         <p class="distance-story-text">${escapeHtml(distance.story)}</p>
       </div>
 
@@ -264,6 +282,36 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('')}
       </div>
     `;
+
+    // Start live clock updates
+    startLiveClocks();
+  }
+
+  function startLiveClocks() {
+    function update() {
+      const elMumbai = document.getElementById('clock-mumbai');
+      const elLA = document.getElementById('clock-la');
+      if (!elMumbai || !elLA) return;
+
+      const now = new Date();
+      elMumbai.textContent = now.toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+
+      elLA.textContent = now.toLocaleTimeString('en-US', {
+        timeZone: 'America/Los_Angeles',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+    }
+    update();
+    setInterval(update, 1000);
   }
 
   // -------------------------------------------------------------
@@ -327,17 +375,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -------------------------------------------------------------
-  // CHAPTER 10 — TODAY & UNWRITTEN ENDING 🎂
+  // CHAPTER 10 — TODAY & ALL INTERACTIVE CELEBRATIONS 🎂
   // -------------------------------------------------------------
   function renderChapter10_Today(today, couple) {
     const bannerEl = document.getElementById('today-unwritten-banner');
     const wishBox = document.getElementById('today-birthday-card');
+    const candleCard = document.getElementById('today-candle-card');
+    const couponsContainer = document.getElementById('today-coupons-container');
     const salutationEl = document.getElementById('letter-salutation-display');
     const bodyEl = document.getElementById('letter-body-prose-display');
     const signoffEl = document.getElementById('letter-signoff-display');
     const sigEl = document.getElementById('letter-signature-display');
     const returnBtn = document.getElementById('btn-return-start');
 
+    // 1. Unwritten Banner
     if (bannerEl && today.transitionLines) {
       bannerEl.innerHTML = `
         <div class="unwritten-lines-flow">
@@ -350,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
+    // 2. Birthday Wish Box
     if (wishBox && today.birthdayWish) {
       wishBox.innerHTML = `
         <h2 class="today-birthday-headline">${escapeHtml(today.birthdayWish.headline)}</h2>
@@ -363,6 +415,85 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
+    // 3. Interactive Candle (Make a Wish)
+    if (candleCard && today.candleWish) {
+      candleCard.innerHTML = `
+        <div class="candle-prompt-text">🕯️ Tap the candle to make your 21st wish</div>
+        <div class="candle-flame-wrapper" id="interactive-candle-wrapper">
+          <div class="candle-flame" id="candle-flame-el"></div>
+          <div class="candle-smoke"></div>
+          <div class="candle-wick"></div>
+          <div class="candle-wax-body">21</div>
+        </div>
+        <div class="candle-wish-revealed" id="candle-revealed-box">
+          <p class="candle-revealed-text">“${escapeHtml(today.candleWish.revealedMessage)}”</p>
+        </div>
+      `;
+
+      const candleFlame = document.getElementById('candle-flame-el');
+      const revealedBox = document.getElementById('candle-revealed-box');
+      if (candleCard && candleFlame && revealedBox) {
+        candleCard.addEventListener('click', () => {
+          if (!candleFlame.classList.contains('blown-out')) {
+            candleFlame.classList.add('blown-out');
+            revealedBox.classList.add('active');
+            triggerConfetti();
+          }
+        });
+      }
+    }
+
+    // 4. Redeemable Coupons Deck
+    if (couponsContainer && today.coupons) {
+      couponsContainer.innerHTML = `
+        <div class="coupons-header">
+          <h3 class="coupons-title">✦ No-Expiration Birthday Coupons ✦</h3>
+          <p class="coupons-subtitle">Redeemable by Ria anytime, anywhere.</p>
+        </div>
+        <div class="coupons-grid">
+          ${today.coupons.map(c => `
+            <div class="coupon-card" id="coupon-${c.id}">
+              <div>
+                <div class="coupon-card-header">
+                  <span class="coupon-icon">${c.icon}</span>
+                  <h4 class="coupon-card-title">${escapeHtml(c.title)}</h4>
+                </div>
+                <p class="coupon-desc">${escapeHtml(c.desc)}</p>
+              </div>
+              <button class="btn-redeem-coupon" onclick="window.redeemCoupon('${c.id}')">Redeem</button>
+              <div class="coupon-redeemed-stamp">✓ REDEEMED FOR RIA ❤️</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      window.redeemCoupon = (id) => {
+        const card = document.getElementById(`coupon-${id}`);
+        if (card && !card.classList.contains('redeemed')) {
+          card.classList.add('redeemed');
+          triggerConfetti();
+        }
+      };
+    }
+
+    // 5. Wax Seal Envelope
+    const sealBtn = document.getElementById('interactive-wax-seal');
+    const sealCover = document.getElementById('envelope-sealed-cover');
+    const letterSheet = document.getElementById('unfolded-letter-sheet');
+
+    if (sealBtn && sealCover && letterSheet) {
+      sealBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sealCover.classList.add('opened');
+        letterSheet.classList.add('unfolded');
+        triggerConfetti();
+        setTimeout(() => {
+          letterSheet.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      });
+    }
+
+    // Letter texts
     if (salutationEl) salutationEl.textContent = `Dear ${couple.herName || 'Ria'},`;
     if (bodyEl && today.finalLetter) bodyEl.textContent = today.finalLetter.body;
     if (signoffEl && today.finalLetter) signoffEl.textContent = today.finalLetter.closing;
@@ -375,6 +506,65 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ch1) ch1.scrollIntoView({ behavior: 'smooth' });
       });
     }
+  }
+
+  // -------------------------------------------------------------
+  // GOLD SPARKLE CONFETTI HELPER
+  // -------------------------------------------------------------
+  function triggerConfetti() {
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.inset = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '99999';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = Array.from({ length: 50 }).map(() => ({
+      x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+      y: canvas.height / 2,
+      vx: (Math.random() - 0.5) * 12,
+      vy: (Math.random() - 0.5) * 12 - 4,
+      size: Math.random() * 6 + 3,
+      color: ['#DFC48D', '#C5A059', '#FFFFFF', '#FFD700', '#F4E4BA'][Math.floor(Math.random() * 5)],
+      alpha: 1,
+      decay: Math.random() * 0.015 + 0.01
+    }));
+
+    let animId;
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = false;
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.2;
+        p.alpha -= p.decay;
+        if (p.alpha > 0) {
+          alive = true;
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      });
+
+      if (alive) {
+        animId = requestAnimationFrame(render);
+      } else {
+        cancelAnimationFrame(animId);
+        if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+      }
+    }
+    render();
   }
 
   // -------------------------------------------------------------
@@ -455,6 +645,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // SCROLL ANIMATIONS
   // -------------------------------------------------------------
   function setupScrollAnimations() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -462,8 +657,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.05,
+      rootMargin: '50px 0px 50px 0px'
     });
 
     document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
@@ -490,7 +685,6 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('video-modal-open');
 
-      // Pause ambient audio if active
       if (window.ambientSound && window.ambientSound.isPlaying) {
         window.ambientSound.pause();
       }
@@ -499,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(err => {
-          console.log('Video autoplay prevented, user can click play on player:', err);
+          console.log('Video autoplay prevented, user can click play:', err);
         });
       }
     }
@@ -532,7 +726,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Automatically close modal & unlock scroll when video finishes!
     video.addEventListener('ended', () => {
       const hint = modal.querySelector('.intro-video-hint');
       if (hint) {
@@ -543,14 +736,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 900);
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
         closeVideo(false);
       }
     });
 
-    // Close when clicking outside the video container
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         closeVideo(false);

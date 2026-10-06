@@ -273,11 +273,28 @@
         <!-- Rendered dynamically -->
       </div>
 
-      <!-- Final Letter Stationery -->
-      <div class="letter-stationery-envelope reveal-on-scroll delay-2">
-        <div class="letter-sheet">
+      <!-- 1. Interactive 21st Candle (Make a Wish) -->
+      <div class="candle-interactive-card reveal-on-scroll delay-1" id="today-candle-card">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- 2. Redeemable Birthday Coupons Deck -->
+      <div class="coupons-section-wrapper reveal-on-scroll delay-2" id="today-coupons-container">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- 3. Interactive Wax Seal Letter Stationery -->
+      <div class="letter-stationery-envelope reveal-on-scroll delay-3" id="letter-envelope-wrapper">
+        <div class="envelope-sealed-cover" id="envelope-sealed-cover">
+          <div class="wax-seal-interactive" id="interactive-wax-seal" title="Click to break seal and unfold letter">
+            <span class="wax-monogram">R</span>
+            <span class="wax-click-hint">✦ Tap to open your letter ✦</span>
+          </div>
+        </div>
+
+        <div class="letter-sheet" id="unfolded-letter-sheet">
           <div class="letter-deckle-edge"></div>
-          <div class="letter-wax-seal">✦</div>
+          <div class="letter-wax-seal-watermark">✦</div>
           
           <h3 class="letter-salutation" id="letter-salutation-display">Dear Ria,</h3>
           <div class="letter-body-prose" id="letter-body-prose-display">
